@@ -93,7 +93,8 @@ export default class App extends React.Component {
             ...prevState.toDos,
             ...newToDoObject
           }
-        }
+        };
+        this._saveToDos(newState.toDos);
         return { ...newState };
       });
     }
@@ -105,7 +106,8 @@ export default class App extends React.Component {
       const newState = {
         ...prevState,
         ...toDos
-      }
+      };
+      this._saveToDos(newState.toDos);
       return { ...newState }
     });
   };
@@ -121,6 +123,7 @@ export default class App extends React.Component {
           }
         }
       };
+      this._saveToDos(newState.toDos);
       return { ...newState };
     });
   };
@@ -136,9 +139,10 @@ export default class App extends React.Component {
           }
         }
       };
+      this._saveToDos(newState.toDos);
       return { ...newState };
     });
-  }
+  };
   _updateToDo = (id, text) => {
     this.setState(prevState => {
       const newState = {
@@ -151,9 +155,13 @@ export default class App extends React.Component {
           }
         }
       };
+      this._saveToDos(newState.toDos);
       return { ...newState };
     });
   };
+  _saveToDos = newToDos => {
+    const _saveToDos = AsyncStorage.setItem("toDos", JSON.stringify(newToDos));
+  }
 }
 
 const styles = StyleSheet.create({
