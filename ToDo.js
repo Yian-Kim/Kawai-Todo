@@ -27,6 +27,7 @@ export default class ToDo extends Component{
                         <TextInput 
                             style={[
                                 styles.text, 
+                                styles.input,
                                 isCompleted ? styles.completedText : styles.umcompletedText]} 
                             value={toDoValue} 
                             multiline={true}
